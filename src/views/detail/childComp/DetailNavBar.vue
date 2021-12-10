@@ -39,6 +39,8 @@ components:{
    },
    activeClick(index){
      this.currentIndex=index
+    this.$emit('activeClick',index)
+   
    }
  }
 }

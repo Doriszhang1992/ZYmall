@@ -28,16 +28,16 @@ props:{
 },
 methods:{
   imgLoad(){
-    if(++this.counter===this.imageLength){
+    // if(++this.counter===this.imageLength){
      this.$emit('imgLoad')
-    }
+    // }
    
   }
 },
 watch:{
-  detail(){
-    this.imageLength = this.detail.detailImage[0].list.length
-  }
+   //detail(){
+   //  this.imageLength = this.detail.detailImage[0].list.length
+  // }
 }
 }
 </script>

@@ -50,7 +50,7 @@ finishPullUp(){
 //刷新
 refresh(){
   this.scroll && this.scroll.refresh()
-  console.log('---doris')
+  // console.log('---doris')
 }
 }//methods结尾
 }

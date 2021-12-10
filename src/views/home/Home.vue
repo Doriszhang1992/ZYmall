@@ -49,11 +49,11 @@ import NavBar from 'components/common/navbar/NavBar'
 import TabControl from 'components/content/tabcontrol/TabControl'
 import GoodsList from 'components/content/goods/GoodsList'
 import scroll from 'components/common/scroll/Scroll'
-import BackTop from 'components/content/backtop/BackTop'
+
 
 
 import {getHomeMultiData,getHomeGoodsData} from 'network/home'
-import {imgListenerMixin} from 'common/minxin'
+import {imgListenerMixin,backTopMixin} from 'common/minxin'
 import HomeSwiper from './childComp/HomeSwiper.vue'
 import HomeRecommend from './childComp/HomeRecommend.vue'
 import HomeFeature from './childComp/HomeFeature.vue'
@@ -69,14 +69,13 @@ export default {
     'sell':{page:0,list:[]},
        },
        currentType:'pop',
-       isShow:false,
        tabShow:false,
       tabControlTop:0,
       saveY:0,
       
     }
   },
-mixins:[imgListenerMixin],
+mixins:[imgListenerMixin,backTopMixin],
 components:{
   NavBar,
 TabControl,
@@ -86,7 +85,7 @@ scroll,
 HomeSwiper,
 HomeRecommend,
 HomeFeature,
-BackTop
+
 },
 
 created(){
@@ -131,9 +130,7 @@ methods:{
    this.$refs.tabcontrol1.currentIndex=index
    this.$refs.tabcontrol2.currentIndex=index
   },
-  backTop(){
-   this.$refs.scroll.scrollTo(0,0)
-  },
+ 
   appear(position){
    this.isShow=(-position.y)>1000
    if(-position.y>=this.tabControlTop){
