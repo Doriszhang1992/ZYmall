@@ -1,5 +1,5 @@
 <template>
-  <div class="check-button">
+  <div class="check-button" >
     <img src="~assets/img/common/check.png" alt="" :class="{check:isChecked}">
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {
 props:{
   isChecked:{
     type:Boolean,
-    default:true
+    default:false
   }
 }
 }

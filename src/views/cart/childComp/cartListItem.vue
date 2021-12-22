@@ -1,7 +1,7 @@
 <template>
   <div class="item-list">
     <div class="selector">
-    <check-button />
+    <check-button :is-checked="itemInfo.isCheck" @click.native="buttonClick" />
     </div>
     <div class="image">
       <img :src="itemInfo.image" alt="">
@@ -30,6 +30,11 @@ props:{
 },
 components:{
   CheckButton
+},
+methods:{
+  buttonClick(){
+    this.itemInfo.isCheck=!this.itemInfo.isCheck
+  }
 }
 }
 </script>

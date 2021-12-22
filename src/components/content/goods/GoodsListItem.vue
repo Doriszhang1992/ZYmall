@@ -22,7 +22,7 @@ props:{
 },
 computed:{
   showImg(){
-    return this.listitem.image || this.listitem.show.img
+    return this.listitem.img || this.listitem.image || this.listitem.show.img
   }
 },
 methods:{

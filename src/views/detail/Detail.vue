@@ -37,7 +37,7 @@ import GoodsList from 'components/content/goods/GoodsList'
 import {debounce} from 'common/commonuse'
 import {imgListenerMixin,backTopMixin} from 'common/minxin'
 
-
+import {mapActions} from 'vuex'
 
 import {getDetaildata,BaseInfo,ShopInfo,Params,getRecommendData} from'network/detail'
 
@@ -76,7 +76,7 @@ export default {
      this.scrollYs.push(this.$refs.comment.$el.offsetTop),
      this.scrollYs.push(this.$refs.recommend.$el.offsetTop)
       this.scrollYs.push(Number.MAX_VALUE)
-    //  console.log(this.scrollYs)
+     console.log(this.scrollYs)
      },20)
   
  },
@@ -85,7 +85,7 @@ export default {
   
  },
  destroyed(){
-  this.$bus.$off('imgLoad',this.imgListener)
+  this.$bus.$off('imageLoad',this.imgListener)
  },
  components:{
   DetailNavBar,
@@ -103,6 +103,7 @@ export default {
  
  },
  methods:{ 
+   ...mapActions(['addcart']),
    addtoCart(){
       //1.获取数据
      const product={}
@@ -111,11 +112,14 @@ export default {
      product.desc=this.baseinfo.desc
      product.price=this.baseinfo.realPrice
      product.id=this.id
-     this.$store.dispatch('addcart',product).then(res=>{
-       console.log(res)
-     })
-    
-   
+    //  this.$store.dispatch('addcart',product).then(res=>{
+    //    console.log(res)
+    //  })
+    this.addcart(product).then(res=>{
+      // console.log(res)
+       this.$toast.show(res)
+    })
+  
    },
 
    imageLoad(){
